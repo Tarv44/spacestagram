@@ -1,25 +1,47 @@
-import logo from './logo.svg';
+import enTranslations from '@shopify/polaris/locales/en.json';
+import {AppProvider, Button} from '@shopify/polaris';
 import './App.css';
+import { useEffect, useState } from 'react';
+import ImageCard from './ImageCard';
 
-function App() {
+const App = () => {
+  const [images, setImages] = useState([])
+  const imageCards = images.map((imageData, i) => {
+    const toggleLike = () => {
+      const newLikeImages = images
+      newLikeImages[i].liked = !newLikeImages[i].liked
+      setImages(newLikeImages)
+    }
+    return <ImageCard 
+      key={i}
+      imageData={imageData}
+      toggleLike={toggleLike}
+    />
+  })
+  useEffect(() => {
+    const getImages = async () => {
+      const response = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API}&count=10`)
+      if (!response.ok) {
+        throw new Error(`An error has occured: ${response.status}`);
+      }
+      const pics = await response.json()
+      const likeablePics = pics.map(p => {
+        p.liked = false;
+        return p
+      })
+      console.log(likeablePics)
+      setImages(likeablePics)
+    }
+    getImages();
+  }, [])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <AppProvider i18n={enTranslations}>
+      <div>
+        {imageCards}
+        <Button>Load More...</Button>
+      </div>
+    </AppProvider>
+  )
 }
 
 export default App;

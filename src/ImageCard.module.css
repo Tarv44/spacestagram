@@ -1,0 +1,10 @@
+.buttonGroup {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.buttonGroup > button {
+  width: 100px;
+}
