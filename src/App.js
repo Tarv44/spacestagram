@@ -1,6 +1,6 @@
 import enTranslations from '@shopify/polaris/locales/en.json';
 import {AppProvider, Button} from '@shopify/polaris';
-import './App.css';
+import styles from './App.module.css';
 import { useEffect, useState } from 'react';
 import ImageCard from './ImageCard';
 
@@ -18,27 +18,39 @@ const App = () => {
       toggleLike={toggleLike}
     />
   })
-  useEffect(() => {
-    const getImages = async () => {
-      const response = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API}&count=10`)
-      if (!response.ok) {
-        throw new Error(`An error has occured: ${response.status}`);
-      }
-      const pics = await response.json()
-      const likeablePics = pics.map(p => {
-        p.liked = false;
-        return p
-      })
-      console.log(likeablePics)
-      setImages(likeablePics)
+  const getImages = async () => {
+    const response = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API}&count=10`)
+    if (!response.ok) {
+      throw new Error(`An error has occured: ${response.status}`);
     }
+    const pics = await response.json()
+    const likeablePics = pics.map(p => {
+      p.liked = false;
+      return p
+    })
+    setImages(likeablePics)
+  }
+  const loadMore = async () => {
+    const response = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API}&count=10`)
+    if (!response.ok) {
+      throw new Error(`An error has occured: ${response.status}`);
+    }
+    const pics = await response.json()
+    const likeablePics = pics.map(p => {
+      p.liked = false;
+      return p
+    })
+    const newImages = images.concat(likeablePics)
+    setImages(newImages)
+  }
+  useEffect(() => {
     getImages();
   }, [])
   return (
     <AppProvider i18n={enTranslations}>
-      <div>
+      <div className={styles.imageCards}>
         {imageCards}
-        <Button>Load More...</Button>
+        <Button onClick={loadMore}>Load More...</Button>
       </div>
     </AppProvider>
   )

@@ -8,3 +8,33 @@
 .buttonGroup > button {
   width: 100px;
 }
+
+.imgContainer {
+  position: relative;
+}
+.heart {
+  background: url(./images/heart-icon.png) center no-repeat;
+  background-size: cover;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 50%;
+  left: 50%; 
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  opacity: 0;
+  animation: fadeInOut 1s linear;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+  
+}

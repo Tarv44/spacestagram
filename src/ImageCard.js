@@ -23,14 +23,16 @@ const ImageCard = ({imageData, toggleLike}) => {
       title={cardTitle}
       sectioned
     >
-      <img 
-        src={url} 
-        srcSet={`${url}, ${hdurl} 2x`} 
-        alt={title}
-        width='100%'
-        height='100%' 
-        onClick={handleLike}
-      />
+      <div onClick={handleLike} className={styles.imgContainer}>
+        <img 
+          src={url} 
+          srcSet={`${url}, ${hdurl} 2x`} 
+          alt={title}
+          width='100%'
+          height='100%' 
+        />
+        <div style={{display: liked ? 'block' : 'none'}} className={styles.heart}></div>
+      </div>
       <Stack vertical>
         <div className={styles.buttonGroup}>
           <Button
