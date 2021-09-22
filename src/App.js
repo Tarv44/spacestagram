@@ -3,6 +3,8 @@ import {AppProvider, Button} from '@shopify/polaris';
 import styles from './App.module.css';
 import { useEffect, useState } from 'react';
 import ImageCard from './ImageCard';
+import TopBar from './TopBar';
+import Footer from './Footer';
 
 const App = () => {
   const [images, setImages] = useState([])
@@ -48,9 +50,15 @@ const App = () => {
   }, [])
   return (
     <AppProvider i18n={enTranslations}>
-      <div className={styles.imageCards}>
-        {imageCards}
-        <Button onClick={loadMore}>Load More...</Button>
+      <div className={styles.app}>
+        <TopBar />
+        <div className={styles.imageCards}>
+          {imageCards}
+          <div className={styles.buttonContainer}>
+            <Button onClick={loadMore}>Load More...</Button>
+          </div>
+        </div>
+        <Footer />
       </div>
     </AppProvider>
   )

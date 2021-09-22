@@ -1,8 +1,54 @@
+.app { 
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 50px;
+}
 .imageCards {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 335px;
+  margin-top: 1.6rem;
 }
-.imageCards > button {
+
+.buttonContainer {
+  width: 335px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   margin: 1.6rem 0;
+}
+
+@media screen and (min-width: 768px) {
+  .imageCards {
+    flex-flow: row wrap;
+    justify-content: center;
+    width: 100%;
+  }
+  .imageCards > div:nth-of-type(odd) {
+    margin-right: 1.6rem;
+  }
+  .imageCards > div:nth-child(2) {
+    margin-top: 0 !important;
+  }
+}
+
+@media screen and (min-width: 1037px) {
+ .imageCards > div {
+   margin-right: 1.6rem !important;
+ }
+ .imageCards > div:nth-child(3n) {
+   margin-right: 0;
+ }
+}
+@media screen and (min-width: 1388px) {
+ .imageCards > div {
+   margin-right: 1.6rem !important;
+ }
+ .imageCards > div:nth-child(4n) {
+   margin-right: 0;
+ }
 }

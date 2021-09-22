@@ -1,0 +1,21 @@
+.topBar {
+  background: black;
+  width: 100%;
+  color: white;
+  position: fixed;
+  z-index: 99;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  top: 0;
+  box-shadow: 0 4px 8px 4px rgba(0, 0, 0, 0.493);
+}
+
+.topBar h1 {
+  font-size: 24px;
+  font-family: 'Nasa';
+}

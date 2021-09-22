@@ -7,14 +7,23 @@
 
 .buttonGroup > button {
   width: 100px;
+  margin-top: 1.2rem;
 }
 
 .imgContainer {
   position: relative;
 }
+
 .heart {
   background: url(./images/heart-icon.png) center no-repeat;
-  background-size: cover;
+}
+.brokenHeart {
+  background: url(./images/broken-heart.png) center no-repeat;
+}
+
+.heart,
+.brokenHeart {
+  background-size: contain;
   width: 100px;
   height: 100px;
   position: absolute;
@@ -25,6 +34,15 @@
   opacity: 0;
   animation: fadeInOut 1s linear;
 }
+
+@media screen and (min-width: 768px) {
+  .imgContainer > img {
+    width: 295px;
+    height: 295px;
+    object-fit: contain;
+  }
+}
+
 
 @keyframes fadeInOut {
   0% {

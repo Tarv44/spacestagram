@@ -4,6 +4,7 @@ import styles from './ImageCard.module.css';
 
 const ImageCard = ({imageData, toggleLike}) => {
   const [open, setOpen] = useState(false)
+  const [allowUnlike, setAllowUnlike] = useState(false)
   const [liked, setLiked] = useState(imageData.liked)
   const {
     title,
@@ -15,6 +16,7 @@ const ImageCard = ({imageData, toggleLike}) => {
   const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' }
   const cardTitle = `${title} - ${new Date(date).toLocaleDateString("en-US", dateOptions)}`
   const handleLike = () => {
+    if (!allowUnlike) setAllowUnlike(true)
     setLiked(!liked)
     toggleLike();
   }
@@ -32,6 +34,7 @@ const ImageCard = ({imageData, toggleLike}) => {
           height='100%' 
         />
         <div style={{display: liked ? 'block' : 'none'}} className={styles.heart}></div>
+        <div style={{display: allowUnlike && !liked ? 'block' : 'none'}} className={styles.brokenHeart}></div>
       </div>
       <Stack vertical>
         <div className={styles.buttonGroup}>
