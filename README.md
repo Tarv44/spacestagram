@@ -12,6 +12,7 @@ This is a coding challenge included in Shopify's Front End Developer Internship 
 
 ### Highlights
 - Utilized of Polaris, Shopify's React component library
+- Responsive design
 - Users can like/unlike images by clicking on the image
 - Heart animation when a image is liked/unliked
 - Found and used a NASA style font for branding
