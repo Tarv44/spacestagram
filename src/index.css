@@ -14,7 +14,7 @@ code {
 
 @font-face {
   font-family: 'Nasa';
-  src: local('Nasa'), url(./Nasa.ttf) format('truetype');
+  src: local('Nasa'), url(./fonts/Nasa.ttf) format('truetype');
 }
 
 .Polaris-Card {
