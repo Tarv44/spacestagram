@@ -43,6 +43,9 @@
  .imageCards > div:nth-child(3n) {
    margin-right: 0;
  }
+ .imageCards > div:nth-child(3) {
+  margin-top: 0 !important;
+}
 }
 @media screen and (min-width: 1388px) {
  .imageCards > div {
@@ -51,4 +54,7 @@
  .imageCards > div:nth-child(4n) {
    margin-right: 0;
  }
+ .imageCards > div:nth-child(4) {
+  margin-top: 0 !important;
+}
 }
